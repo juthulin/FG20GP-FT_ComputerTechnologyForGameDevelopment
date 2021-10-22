@@ -28,7 +28,7 @@ namespace Main.Scripts
                 {
                     Value = new float3(
                         UnityEngine.Random.Range(-8f, 8f),
-                        7f,
+                        10f,
                         0f
                     )
                 });

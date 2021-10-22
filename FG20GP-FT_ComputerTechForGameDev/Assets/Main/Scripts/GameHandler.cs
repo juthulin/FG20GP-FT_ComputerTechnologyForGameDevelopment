@@ -11,14 +11,7 @@ namespace Main.Scripts
 {
     public class GameHandler : MonoBehaviour
     {
-        [SerializeField] public Mesh mesh;
-        [SerializeField] public Material playerMaterial;
-        [SerializeField] public Material enemyMaterial;
-        [SerializeField] public Material projectileMaterial;
-        [SerializeField] public float playerMovementSpeed = 5f;
-        [SerializeField] public float projectileSpeed = 15f;
         [SerializeField] public float timeBetweenShots = .2f;
-        [SerializeField] public float enemyMovementSpeed = 2f;
         [SerializeField] public int enemiesToSpawn = 5;
 
         private readonly List<GameHandlerComponent> _handlers = new List<GameHandlerComponent>();

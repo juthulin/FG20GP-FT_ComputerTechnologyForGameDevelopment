@@ -1,5 +1,7 @@
 ﻿using Unity.Entities;
 using Unity.Jobs;
+using Unity.Mathematics;
+using Unity.Transforms;
 
 namespace Main.Scripts
 {
@@ -21,7 +23,8 @@ namespace Main.Scripts
             JobHandle jobHandle = Entities.WithAll<Comp_TakeDamage>().ForEach((
                 Entity ent,
                 int entityInQueryIndex,
-                ref Comp_Health healthComp
+                ref Comp_Health healthComp,
+                ref Translation translation
             ) =>
             {
                 ecb.RemoveComponent<Comp_TakeDamage>(entityInQueryIndex, ent);
@@ -29,7 +32,9 @@ namespace Main.Scripts
                 healthComp.Health -= 1;
                 if (healthComp.Health <= 0)
                 {
-                    ecb.AddComponent<Disabled>(entityInQueryIndex, ent);
+                    healthComp.Health = 3;
+                    translation.Value.y = 10;
+                    // ecb.AddComponent<Disabled>(entityInQueryIndex, ent);
                     // ecb.DestroyEntity(entityInQueryIndex, ent);
                 }
 
